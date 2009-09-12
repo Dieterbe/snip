@@ -1,0 +1,18 @@
+#!/bin/sh
+hour=$(date +'%H')
+
+if [ $hour -lt 12 ]
+then
+	echo 'Good morning'
+elif [ $hour -lt 14 ]
+then
+	echo 'Good noon'
+elif [ $hour -lt 18 ]
+then
+	echo 'Good afternoon'
+elif [ $hour -lt 23 ]
+then
+	echo 'Good evening'
+else
+	echo 'Good night'
+fi

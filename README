@@ -1,0 +1,28 @@
+Snip lessens repetitive typing by automatically entering text ('snips') for you.
+
+* Homepage: http://github.com/Dieterbe/snip/
+* License: BSD
+* Dependencies: sh, dmenu, xdotool, zenity
+
+Features:
+
+* interactively see/filter snips using dmenu based on filename
+* TODO: optionally filter on filename and/or contents
+* static snips (use literal contents) and dynamic (execute it and use output)
+* doesn't abuse (overwrite) any clipboard/primary/secondary buffer
+* implements the XDG basedir spec
+* if $DMENU_ARGS is set in the environment, it will be used
+* when saving, if text is selected it is used, otherwise it is asked for
+  (saving is only useful for static snips. write dynamic snips yourself)
+
+Limitations / todo:
+* integration with clipboard. this would mean a separate directory of snips
+  who are a bit more volatile.  you'd store a new snip by using a keycombo,
+  and either use currently selected text, or fill in a form.
+* only ascii suport (xdotool)
+
+HOWTO:
+* put your snips in $XDG_DATA_HOME/snip/snips
+* see /usr/share/snip/examples/snips for example snips
+* the difference between static and dynamic snips is determined by
+  the execute permission

@@ -1,0 +1,3 @@
+#!/bin/sh
+subject=$(zenity  --title "Subject to ask question for" --entry --text "What do you have a question about?")
+echo "Hi, I have a question about $subject.  I googled around a lot but couldn't find what I'm looking for, so here it goes:"

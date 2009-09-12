@@ -1,0 +1,43 @@
+#!/bin/sh
+if [ x"$XDG_DATA_HOME" != "x" ]
+then
+	snips=$XDG_DATA_HOME/snip/snips
+else
+	snips=$HOME/.local/share/snip/snips
+fi
+
+[ -d $snips ] || mkdir -p $snips
+
+if [ x"$DMENU_ARGS" == "x" ]
+then
+	DMENU_ARGS='-p snip: '
+fi
+
+if [ "$1" == 'load' ]
+then
+	#if [ "$2" == 'name' ]
+	snip="$snips/$(ls $snips | dmenu $DMENU_ARGS)"
+	if [ -f $snip ]
+	then
+		if [ -x $snip ]
+		then
+			xdotool type --delay 0 --clearmodifiers "$($snip)"
+		else
+			xdotool type --delay 0 --clearmodifiers "$(cat $snip)"
+		fi
+	fi
+# this only works for (and is only useful for) static snips
+# make dynamic snips manually
+elif [ "$1" == 'save' ]
+then
+	txt=$(xsel)
+	if [ x"$txt" == 'x' ]
+	then
+		txt=$(zenity --title "Save snip" --entry --text "Text to put in snip")
+	fi
+	name=$(zenity --title "Save snip" --entry --text "Filename to save snip as")
+	echo "$txt" > $snips/$name
+else
+	echo "No valid arguments passed" >&2
+	exit 2
+fi
