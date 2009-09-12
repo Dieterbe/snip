@@ -1,3 +1,5 @@
+DESTDIR?=/usr/local
+
 install:
 	install -d $(DESTDIR)/bin
 	install -d $(DESTDIR)/share/snip/docs
