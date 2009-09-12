@@ -1,11 +1,11 @@
 install:
-	install -d $(PREFIX)/bin
-	install -d $(PREFIX)/share/snip/docs
-	install -d $(PREFIX)/share/snip/examples
-	cp -rp examples $(PREFIX)/share/snip/
-	install -m755 snip   $(PREFIX)/bin/snip
-	install -m644 README $(PREFIX)/share/snip/docs
+	install -d $(DESTDIR)/bin
+	install -d $(DESTDIR)/share/snip/docs
+	install -d $(DESTDIR)/share/snip/examples
+	cp -rp examples $(DESTDIR)/share/snip/
+	install -m755 snip   $(DESTDIR)/bin/snip
+	install -m644 README $(DESTDIR)/share/snip/docs
 
 uninstall:
-	rm -rf $(PREFIX)/bin/snip
-	rm -rf $(PREFIX)/share/snip
+	rm -rf $(DESTDIR)/bin/snip
+	rm -rf $(DESTDIR)/share/snip
