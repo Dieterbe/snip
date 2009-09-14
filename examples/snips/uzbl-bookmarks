@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# If you use the uzbl browser, you can use this snip to enter one of your bookmarks
+
+cat ${XDG_DATA_HOME:-$HOME/.local/share}/uzbl/bookmarks | dmenu | cut -d ' ' -f1
