@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# this scripts will run your last typed worked through a spell check 
+# (you need aspell instead for this!!)
+
+word=
+clip_backup=$(xsel -b)
+xdotool key ctrl+shift+Left && xdotool key ctrl+x && word=$(xsel -b)
+if [ x"$word" != 'x' ]
+then
+	new=$(echo $word | aspell -a check | sed -n -e 's/.*0: \([^,]*\),.*/\1/p')
+	if [ x"$new" == 'x' ]
+	then
+		new=$word
+	fi
+	echo $new | xsel -i -b
+	xdotool key ctrl+v
+fi
+echo "$clip_backup" | xsel -i -b
